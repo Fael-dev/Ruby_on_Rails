@@ -1,7 +1,7 @@
 class ProdutosController < ApplicationController
 
     def index
-        @produtos = Produto.order(nome: :desc).limit 5
+        @produtos = Produto.order(nome: :asc).limit 10
         @produtos_com_desconto = Produto.order(:preco).limit 1
     end
     
@@ -16,4 +16,10 @@ class ProdutosController < ApplicationController
         Produto.destroy id
         redirect_to root_url
     end
+
+    def busca
+        @nome = params[:nome]
+        @produtos = Produto.where "nome like ?", "%#{@nome}%"
+    end
+
 end
