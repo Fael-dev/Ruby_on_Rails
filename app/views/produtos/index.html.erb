@@ -16,18 +16,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Camiseta</td>
-                <td>Camiseta Yu Yu Hakusho</td>
-                <td>R$ 30,00</td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td>Short</td>
-                <td>Short Moleton  Yu Yu Hakusho</td>
-                <td>R$ 45,00</td>
-                <td>15</td>
-            </tr>
+            <% todos = Produto.all %>
+            <% todos.each do |produto| %>
+                <tr>
+                    <td><%= produto.nome %></td>
+                    <td><%= produto.descricao %></td>
+                    <td><%= produto.preco %></td>
+                    <td><%= produto.quantidade %></td>
+                </tr>
+            <% end %>
         </tbody>
     </table>
 </body>
