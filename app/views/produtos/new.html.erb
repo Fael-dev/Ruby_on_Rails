@@ -22,16 +22,22 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-2">
             <div class="form-group">
                 <%= form.label :preco  %>
                 <%= form.number_field :preco, step:0.01, class:"form-control"  %>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-2">
             <div class="form-group">
                 <%= form.label :quantidade  %>
                 <%= form.number_field :quantidade, class:"form-control"  %>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <%= form.label :departamento  %>
+                <%= form.collection_select :departamento_id, @departamentos, :id, :nome, {},class:"form-control"  %>
             </div>
         </div>
     </div>
