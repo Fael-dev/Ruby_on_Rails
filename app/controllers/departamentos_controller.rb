@@ -10,6 +10,7 @@ class DepartamentosController < ApplicationController
   # GET /departamentos/1
   # GET /departamentos/1.json
   def show
+    @produtos_por_departamento = Produto.where("departamento_id = ?", params[:id])
   end
 
   # GET /departamentos/new
@@ -28,7 +29,7 @@ class DepartamentosController < ApplicationController
 
     respond_to do |format|
       if @departamento.save
-        format.html { redirect_to @departamento, notice: 'Departamento was successfully created.' }
+        format.html { redirect_to @departamento, notice: 'Departamento criado com sucesso.' }
         format.json { render :show, status: :created, location: @departamento }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class DepartamentosController < ApplicationController
   def update
     respond_to do |format|
       if @departamento.update(departamento_params)
-        format.html { redirect_to @departamento, notice: 'Departamento was successfully updated.' }
+        format.html { redirect_to @departamento, notice: 'Departamento atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @departamento }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class DepartamentosController < ApplicationController
   def destroy
     @departamento.destroy
     respond_to do |format|
-      format.html { redirect_to departamentos_url, notice: 'Departamento was successfully destroyed.' }
+      format.html { redirect_to departamentos_url, notice: 'Departamento deletado com sucesso.' }
       format.json { head :no_content }
     end
   end
